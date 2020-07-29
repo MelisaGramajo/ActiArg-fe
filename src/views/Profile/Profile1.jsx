@@ -20,6 +20,7 @@ const Profile1 = (props) => {
     const [isActive, setActive] = useState(false)
 
     let { id } = useParams();
+    console.log("ID:::", id);
 
     const toggle = () => {
         setActive(!isActive)
@@ -27,21 +28,16 @@ const Profile1 = (props) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        props.showActivities(id)
+        props.showTurns(id)
+        props.showPublicits(id)
         props.showCarousels(id)
         props.findGymById(id)
-        
-        if(props.publicits.length === 0) {
-            props.showPublicits(id)
-        }
-        
-        if(props.turns.length === 0) {
-            props.showTurns(id)
-        }
-
-        if(props.activities.length === 0) {
-            props.showActivities(id)
-        }
     }, [])
+
+
+    console.log("error::::", props.error)
+    console.log("link::", props.linkPago)
 
 
     if (props.error) {
@@ -52,6 +48,8 @@ const Profile1 = (props) => {
         }
     }
 
+
+
     return (
         <div>
             <Navbar
@@ -59,7 +57,6 @@ const Profile1 = (props) => {
                 right={['Nosotros', 'Contactanos']}
             />
             {
-
                 props.publicits.length !== 0 || props.activities.length !== 0 || props.turns.length !== 0 ?
                 <div>
                 {
@@ -106,7 +103,6 @@ const Profile1 = (props) => {
                         })}
                     </div>
     
-
                     <div>
                         {DatasJumbotron.map((data) => {
                             return <Jumbotron
@@ -224,7 +220,6 @@ const Profile1 = (props) => {
                             </div>
                         </div>
                     </div>
-
                     {/* activitybyGym */}
                     <div className="customPrice"
                         style={{
@@ -248,7 +243,6 @@ const Profile1 = (props) => {
                                 />
                             })}
                         </div>
-
                     </div>
                     {/* datos del gym */}
                     <div>
@@ -265,6 +259,7 @@ const Profile1 = (props) => {
             <Footer />
             <ScrollArrow />
         </div>
+
     )
 }
 

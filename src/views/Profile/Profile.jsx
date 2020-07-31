@@ -53,7 +53,7 @@ const Profile = (props) => {
         if(props.activities.length === 0) {
             props.showActivities(id)
         }
-    }, [])
+    })
 
     if (props.error) {
         alert(props.error)

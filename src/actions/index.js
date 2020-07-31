@@ -86,7 +86,7 @@ export function login(email, password) {
         const requestOptions = {
             method: 'POST'
         }
-        let response = await fetch(`http://actiar-be.herokuapp.com/login?email=${email}&&password=${password}`, requestOptions)
+        let response = await fetch(`https://actiar-be.herokuapp.com/login?email=${email}&&password=${password}`, requestOptions)
         let credentials = await response.json()
         if(credentials.error){
             dispatch({
@@ -122,7 +122,7 @@ export function register(nombre, apellido, dni, telefono, email, password){
                 password: password
             })
         }
-        let response = await fetch('http://actiar-be.herokuapp.com/register', requestOptions)
+        let response = await fetch('https://actiar-be.herokuapp.com/register', requestOptions)
         let register = await response.json()
         if(register.error){
             dispatch({

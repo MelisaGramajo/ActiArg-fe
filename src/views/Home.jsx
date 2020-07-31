@@ -18,7 +18,7 @@ import {
 const Home = (props) => {
     useEffect(() => {
         cleanState();
-    }, [])
+    }, )
 
     const cleanState = () => {
         props.cleanActivities()
